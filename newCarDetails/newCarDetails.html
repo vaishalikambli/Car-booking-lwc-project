@@ -1,0 +1,16 @@
+<template>
+  <!-- Add new car detail panel -->
+  <lightning-card title="Add New Car Details">
+    <lightning-input class="slds-col slds-size_3-of-6 slds-m-left_medium slds-m-right_medium slds-m-bottom_medium carName" name="carName" type="text" label="Car Name"
+      onchange={addNewCarDetails}></lightning-input>
+    <lightning-input class="slds-col slds-size_3-of-6 slds-m-left_medium slds-m-right_medium slds-m-bottom_medium carModel" name="carModel" type="text" label="Car Model"
+      onchange={addNewCarDetails}></lightning-input>
+    <lightning-combobox class="slds-col slds-size_3-of-6 slds-m-left_medium slds-m-right_medium slds-m-bottom_medium carType" name="carType" label="Car Type" value={value}
+      placeholder="None" options={carTypeOptions} onchange={addNewCarDetails}>
+    </lightning-combobox>
+    <lightning-input class="slds-col slds-size_3-of-6 slds-m-left_medium slds-m-right_medium slds-m-bottom_medium pricePerDay" name="pricePerDay" type="Number"
+      label="Price - (Per Day)" formatter="currency" step=".01" onchange={addNewCarDetails}></lightning-input>
+    <lightning-button class="slds-m-left_medium slds-m-right_medium" label="Add Car" onclick={createNewCarEntry}
+      variant="brand"></lightning-button>
+  </lightning-card>
+</template>
