@@ -43,15 +43,14 @@ validateCarFields(){
   let pricePerDayField = this.template.querySelector('.pricePerDay');
   let pricePerDayValue = pricePerDayField.value;
 
-  if(carNameValue === ''){
-    console.log('Inside validation!!! ' + carNameValue);
-    carNameField.setCustomValidity("Car name value is required");
+  if(carNameValue === null || carNameValue === ''){
+    carNameField.setCustomValidity("Car name value is required");    
   }else{
     carNameField.setCustomValidity("");
   }
   carNameField.reportValidity();
 
-  if(carModelValue === ''){
+  if(carModelValue === null || carModelValue === ''){
     console.log('Inside validation!!! ' + carModelValue);
     carModelField.setCustomValidity("Car model value is required");
   }else{
@@ -59,7 +58,7 @@ validateCarFields(){
   }
   carModelField.reportValidity();
   
-  if(carTypeValue === ''){
+  if(carTypeValue === null || carTypeValue === ''){
     console.log('Inside validation!!! ' + carTypeValue);
     carTypeField.setCustomValidity("Car type value is required");
   }else{
@@ -67,13 +66,13 @@ validateCarFields(){
   }
   carTypeField.reportValidity();
   
-  if(pricePerDayValue === ''){
+  if(pricePerDayValue === null || pricePerDayValue === ''){
     console.log('Inside validation!!! ' + pricePerDayValue);
     pricePerDayField.setCustomValidity("price value is required");
   }else{
     pricePerDayField.setCustomValidity("");
   }
-  pricePerDayField.reportValidity();  
+  pricePerDayField.reportValidity();
 }
 
   createNewCarEntry(event){
@@ -81,11 +80,16 @@ validateCarFields(){
     const recordDetails = {apiName : 'Car__c', fields : fields};
 
     this.validateCarFields();
-    
+
     createRecord(recordDetails).then(response => {
+      console.log('Response :: ' + JSON.stringify(response));
+      if(response){        
         this.saveRecordToast('Success!', 'You have been created new record Successfully', 'success');        
+      }
       }).catch(error => {
-        this.saveRecordToast('Error!', 'Failed to create new record', 'error');
+       // if(response === null){ 
+          this.saveRecordToast('Error!', 'Failed to create new record', 'error');
+       // }
       })
   }
 

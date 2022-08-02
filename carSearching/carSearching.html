@@ -1,7 +1,17 @@
 <template>
   <lightning-card title="Search Car">
-    <lightning-input type="text" label="Search criteria" name="searchName" onchange={searchCarDetails}>
+    <lightning-input 
+      class="slds-m-left_medium slds-m-right_medium slds-col slds-size_5-of-12 slds-m-left_medium slds-m-right_medium slds-m-bottom_medium " 
+      type="text" 
+      label="Search here" 
+      name="searchName" 
+      onchange={searchCarDetails} placeholder="Type here"
+    >
     </lightning-input>
-    <c-dynamic-table content={carData}></c-dynamic-table>
+    <lightning-input type="date" name="startDate" label="Enter a start date" class="slds-col slds-size_3-of-12 slds-m-left_medium slds-m-right_medium slds-m-bottom_medium " ></lightning-input>
+    <lightning-input type="date" name="endDate" label="Enter a end date" class="slds-col slds-size_3-of-12 slds-m-left_medium slds-m-right_medium slds-m-bottom_medium "></lightning-input>
+    <div class="slds-m-top_medium slds-m-left_medium slds-m-right_medium">
+      <c-dynamic-table content={carData}></c-dynamic-table>
+    </div>
   </lightning-card>    
 </template>
